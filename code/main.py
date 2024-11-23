@@ -41,9 +41,11 @@ class CaesarsCipher:
 
 
 if __name__ == "__main__":
-    ck = CaesarsCipher()
-    print(ck.decrypt("Wkh.ydfdwlrq.zdv.d.vxffhvv"))
 
-    ck1 = CaesarsCipher()
-    ck1.changer_key(5)  # Изменяю атрибут класса - ключ
-    print(ck1.encrypt("The vacation was a success"))
+    ck = CaesarsCipher()
+    string = "Wkh.ydfdwlrq.zdv.d.vxffhvv"
+
+    input_path = input('Введите путь к файлу\n')
+
+    with open(input_path, 'w', encoding='utf-8') as f:
+        print(ck.decrypt(string), file=f)
