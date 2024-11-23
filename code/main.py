@@ -5,8 +5,9 @@ class CaesarsCipher:
     dictionary = enchant.Dict("en_US")
     key = 0
     SYMBOL = list()
-    SYMBOL.extend("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                  "1234567890 !?.")
+    SYMBOL.extend(
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" "1234567890 !?."
+    )
 
     @classmethod
     def changer_key(cls, new: int):
@@ -45,7 +46,7 @@ if __name__ == "__main__":
     ck = CaesarsCipher()
     string = "Wkh.ydfdwlrq.zdv.d.vxffhvv"
 
-    input_path = input('Введите путь к файлу\n')
+    input_path = input("Введите путь к файлу\n")
 
-    with open(input_path, 'w', encoding='utf-8') as f:
+    with open(input_path, "w", encoding="utf-8") as f:
         print(ck.decrypt(string), file=f)
