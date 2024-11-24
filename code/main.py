@@ -6,7 +6,7 @@ class CaesarsCipher:
     key = 0
     SYMBOL = list()
     SYMBOL.extend(
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" "1234567890 !?."
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?."
     )
 
     @classmethod
@@ -27,11 +27,14 @@ class CaesarsCipher:
             temp = ""
             for c in string:
                 temp += self.SYMBOL[(self.SYMBOL.index(c) - i)]
-            if all([self.dictionary.check(word) for word in temp.split()]):
+            if any([self.dictionary.check(word) for word in temp.split()]):
                 self.key = i
                 result = temp
                 break
-        return f"{self.key}: {result}"
+        if result == '':
+            raise Exception("Such words haven't in english")
+        else:
+            return f"{self.key}: {result}"
 
     def encrypt(self, string):
         result = ""
@@ -42,11 +45,10 @@ class CaesarsCipher:
 
 
 if __name__ == "__main__":
-
     ck = CaesarsCipher()
-    string = "Wkh.ydfdwlrq.zdv.d.vxffhvv"
+    strings = "o3zR v..D0?yRA0R8FR8v47w0ER4.R1WdC!sLF5D"
 
     input_path = input("Введите путь к файлу\n")
 
     with open(input_path, "w", encoding="utf-8") as f:
-        print(ck.decrypt(string), file=f)
+        print(ck.decrypt(strings), file=f)
